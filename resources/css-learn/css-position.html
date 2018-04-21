@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Position Test</title>
+  <style>
+    body * {
+      border: solid;
+      border-width: 1px;
+      border-color: #2b669a;
+    }
+    h1 {
+       border: solid;
+       border-width: 5px;
+       border-color: #9a346c;
+     }
+    h2 {
+      border: solid;
+      border-width: 3px;
+      border-color: #399a98;
+    }
+    .floating-box {
+      display: inline-block;
+      width: 150px;
+      height: 75px;
+      margin: 10px;
+      border: 3px solid #73AD21;
+    }
+    .after-box {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+<h1>position</h1>
+<h2>static</h2>
+<div>
+  <p style="height: 50px; width: 200px; position: static;  "> static</p>
+  <p style="height: 50px; width: 200px; position: static;  left: 30px; top: 20px;"> static left: 30px; top: 20px;</p>
+  从效果看，static定位不受lef, top等偏移设置的影响。是默认的定位方式
+</div>
+
+<h2>相对定位relative</h2>
+<div>
+  <p style="height: 50px; width: 200px; position: relative;  "> relative</p>
+  <p style="height: 50px; width: 200px; position: relative;  left: 30px; top: 20px;"> position: relative;  left: 30px; top: 20px;</p>
+  <p style="height: 50px; width: 200px; position: relative;  "> relative</p>
+  <p style="height: 50px; width: 500px; position: relative;  "> 从效果看，相对定位是相对前一个元素没有偏移前的位置的定位。
+  或者换个说法，相对定位的元素在dom中占用的位置是其原本应该在的位置，而不受偏移值的影响</p>
+</div>
+
+<h2>fixed</h2>
+<div>
+  <p style="height: 50px; width: 200px; position: fixed; top: 500px; right: 0; border: 5px solid red; background-color: #7d8547"> fixed </p>
+  从效果看，不会受页面滚动，留在视察的固定位置
+</div>
+
+<h2>绝对定位absolute</h2>
+从使用效果看，使用绝对定位时，元素实际上不占用空间，但是显示的时候根据margin, left, right等值调整位置。
+<br>下面的这条粗线实际上是因为div元素内没有实际上的元素占位，所以border-top跟border-bottom合在一起
+<div>
+  <p style="height: 50px; width: 200px; position: absolute;"> absolute</p>
+  <p style="height: 50px; width: 200px; position: absolute; left: 300px;"> position: absolute; left: 300px;</p>
+</div>
+
+<h1 style="margin-top: 100px">display属性</h1>
+<h2>inline-block(比float更好的浮动窗口布局)</h2>
+
+<div class="floating-box">Floating box</div>
+<div class="floating-box">Floating box</div>
+<div class="floating-box" style="height: 100px;">Floating box</div>
+<div class="floating-box">Floating box</div>
+<div class="floating-box">Floating box</div>
+<div class="floating-box">Floating box</div>
+<div class="floating-box">Floating box</div>
+<div class="floating-box">Floating box</div>
+<div class="after-box">可以放大缩小窗口看看。几个好处：
+  <ul>
+    <li>高度以最高的为准，不会向float一样被某个不一样高的元素卡住</li>
+    <li>不用像float一样需要调用clear方法</li>
+    <li>inline的box大小会自动限定到跟内容等宽</li>
+  </ul>
+</div>
+
+<h3>实现下拉效果</h3>
+<style>
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>
+
+<div class="dropdown">
+  <span>Mouse over me</span>
+  <div class="dropdown-content">
+    <p>Hello World!</p>
+  </div>
+</div>
+<h1 style="margin-top: 100px">overflow</h1>
+<h2>overflow</h2>
+<div style="width: 500px; overflow: auto;">
+  <p style="height: 50px; width: 200px; position: relative; left: 400px; ">
+    relative width: 200px; position: relative; left: 400px;</p>
+</div>
+</body>
+</html>

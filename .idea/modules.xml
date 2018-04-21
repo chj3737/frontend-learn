@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:/work/学习材料/vue-loader-demo/my-project/JavaPrj.iml" filepath="C:/work/学习材料/vue-loader-demo/my-project/JavaPrj.iml" />
+      <module fileurl="file://C:/work/学习材料/SimpleJavaProject/SimpleJavaProject.iml" filepath="C:/work/学习材料/SimpleJavaProject/SimpleJavaProject.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/beauty_ssm-master/beauty_ssm.iml" filepath="$USER_HOME$/Downloads/beauty_ssm-master/beauty_ssm.iml" group="learning" />
+      <module fileurl="file://$USER_HOME$/Downloads/beauty_ssm_cluster-master/beauty_ssm_cluster.iml" filepath="$USER_HOME$/Downloads/beauty_ssm_cluster-master/beauty_ssm_cluster.iml" group="learning" />
+      <module fileurl="file://C:/work/SVN_管理者视图/DEV/itsmConsole/.idea/itsmAdmin.iml" filepath="C:/work/SVN_管理者视图/DEV/itsmConsole/.idea/itsmAdmin.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/beauty_ssm-master/beauty_ssm-master/src/main/main.iml" filepath="$USER_HOME$/Downloads/beauty_ssm-master/beauty_ssm-master/src/main/main.iml" />
+      <module fileurl="file://C:/work/学习材料/vue-loader-demo/my-project/my-project.iml" filepath="C:/work/学习材料/vue-loader-demo/my-project/my-project.iml" />
+      <module fileurl="file://C:/work/学习材料/vue-loader-demo/vue-hackernews-2.0-master/vue-hackernews-2.0-master.iml" filepath="C:/work/学习材料/vue-loader-demo/vue-hackernews-2.0-master/vue-hackernews-2.0-master.iml" />
+    </modules>
+  </component>
+</project>

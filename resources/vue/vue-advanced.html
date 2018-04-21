@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <script src="../js/vue.js"></script>
+    <script src="../js/browser.min.js"></script>
+</head>
+
+<body>
+<div id="react-tick-example">
+    <tick-example></tick-example>
+</div>
+<!-- state management -->
+<div id="state-management-example">
+    <input :value="message" @keydown.enter="update">
+    <button @click="clear">clear</button>
+</div>
+<div id="state-displayer">
+    <!--<p> date attribute {{ globalState.message }}</p>-->
+    <p> computed attribute {{ computedMessage }}</p>
+</div>
+
+<script type="text/babel">
+
+    Vue.component('tick-example', {
+        template: '<div>\
+            <span>{{ message }}</span>\
+            <button @click="updateMessage"></button>\
+            </div>',
+        data: function () {
+            return {message: 'not updated'};
+        },
+        methods: {
+            updateMessage: function () {
+                this.message = "been updated";
+                console.log(this.$el.textContent);
+                this.$nextTick(function () {
+                    console.log(this.$el.textContent);
+                })
+            }
+        }
+    });
+
+    var appTickExample = new Vue({
+        el: '#react-tick-example'
+    });
+
+    var store = {
+        debug: true,
+        state: {
+            message: 'hello!',
+            date: Date.now()
+        },
+        setMessageAction (newValue) {
+            this.debug && console.log('setMessageAction triggered with', newValue);
+            this.state.message = newValue
+        },
+        clearMessageAction () {
+            this.debug && console.log('clearMessageAction triggered');
+            this.state.message = 'action B triggered';
+            this.state.date = Date.now();
+        }
+    };
+
+    var appStateManagement = new Vue({
+        el: '#state-management-example',
+        data: {
+            state: store.state,
+        },
+        computed: {
+            message() {
+                return this.state.message;
+            }
+        },
+        methods: {
+            update(event) {
+                store.setMessageAction(event.target.value);
+//                this.state.message = event.target.value;
+            },
+            clear() {
+                store.clearMessageAction();
+            },
+
+        }
+    });
+
+    var stateDisplayer = new Vue({
+        el: '#state-displayer',
+        data: {
+//            globalState: store.state
+        },
+        computed: {
+            computedMessage() {
+                console.log("re-computing..")
+//                return this.globalState.message;
+                return store.state.message + store.state.date;
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

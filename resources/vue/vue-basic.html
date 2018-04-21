@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+        <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+        <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+        <META HTTP-EQUIV="expires" CONTENT="0">
+        <script src="../js/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            {{ message }}
+        </div>
+
+        <div id="app-2">
+            <span v-bind:title="message">
+                Hover your mouse over me for a few seconds to see my dynamically bound title!
+            </span>
+        </div>
+
+        <div id="app-3">
+            <p v-if="seen">Now you see me</p>
+        </div>
+
+        <div id="app-for">
+            <ol>
+                <li v-for="(todo, index) in todos">
+                    {{todoType}} - {{index}} - {{ todo.text }}
+                </li>
+            </ol>
+            <ol>
+                <li v-for="(value, key, index) in others">
+                    {{key}} : {{value}}
+                </li>
+            </ol>
+            <!-- filter -->
+            <ul id="vueForFilter">
+                <li v-for="todo in todoWithAtLeastLength">
+                    {{ todo.text }}
+                </li>
+            </ul>
+
+            <ul id="vueForFilter2">
+                <li v-for="todo in hasLengthMoreThan10(todos, 10)">
+                    {{ todo.text }}
+                </li>
+            </ul>
+        </div>
+
+        <div id="app-onEvent">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+            <button v-on:click="counter++">加1</button>
+            <p>这个按钮被点击了 {{ counter }} 次</p>
+
+            <!-- event function -->
+            <button v-on:click="greet">greet</button>
+
+            <!-- function call specify args & $event -->
+            <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+
+            <!-- keyboard event -->
+            <input placeholder="type here and press enter" @keydown.enter="preventEnter"/>
+        </div>
+
+        <div id="app-form">
+            <p>{{ message }}</p>
+            <input v-model="message"><br>
+            <!-- multi line -->
+            <span>Multiline message is: </span>
+            <p style="white-space: pre"> {{ message }} </p>
+            <br>
+            <textarea v-model="message"  placeholder="add multiple lines"></textarea>
+            <!-- checkboxes -->
+            <br>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+
+            <!-- radio -->
+            <br>
+            <input type="radio" id="one" value="One" v-model="picked">
+            <label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked">
+            <label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
+
+            <!-- selection -->
+            <br>
+            <select v-model="selected">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+            <br>
+            <select v-model="selectedMutiple" multiple>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <br>
+            <span>Selected: {{ selectedMutiple }}</span>
+            <br>
+            <select v-model="dynamicSelected">
+                <option v-for="option in dynamicSelections" v-bind:value="option.value">
+                    {{option.text}}
+                </option>
+            </select>
+            <span>Selected: {{ dynamicSelected }}</span>
+
+            <!-- bind value -->
+            <br> <!-- check box -->
+            <label for="checkme">Check Me</label>
+            <input id="checkme" type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b">
+            <span>Selected: {{toggle.name}} </span>
+
+
+        </div>
+
+        <div id="app-component">
+            <ol>
+                <todo-item v-for="todo in todos" v-bind:todo="todo"></todo-item>
+            </ol>
+            <!-- data must be a function -->
+            <br>
+            <div>
+                <simple-counter></simple-counter>
+                <simple-counter></simple-counter>
+                <simple-counter></simple-counter>
+            </div>
+            <!-- dynamic props from parent -->
+            <br>
+            <div>
+                <input v-model="parentMsg"><br>
+                <child v-bind:parent-message="parentMsg"></child>
+            </div>
+
+            <!-- pass event to parent -->
+            <br>
+            <div id="counter-event-example">
+                <p>total from sons: {{ total }}</p>
+                <button-counter v-on:increment="incrementTotal"></button-counter>
+                <button-counter v-on:increment="incrementTotal"></button-counter>
+            </div>
+
+            <!-- custom v-model -->
+            <br>
+            <div id="v-model-example">
+                <p>{{ message }}</p>
+                <my-input label="Message" v-model="message"></my-input>
+            </div>
+
+            <!-- slot -->
+            <br>
+            <div id="slot-example">
+                <app-parent></app-parent>
+            </div>
+        </div>
+
+        <div id="app-computed">
+            {{ fullName2 }}
+        </div>
+
+        <div id="app-if">
+            <h1 v-if="ok">Yes</h1>
+            <h1 v-else>No</h1>
+            <template v-if="ok">
+                <h1>Title</h1>
+                <p>Paragraph 1</p>
+            </template>
+        </div>
+
+
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!'
+                }
+            });
+
+            var app2 = new Vue({
+                el: '#app-2',
+                data: {
+                    message: 'You loaded this page on ' + new Date()
+                }
+            });
+
+            var app3 = new Vue({
+                el: '#app-3',
+                data: {
+                    seen: true
+                }
+            });
+
+            var appFor = new Vue({
+                el: '#app-for',
+                data: {
+                    todoType: "chj todo",
+                    todos: [
+                        { text: 'Learn JavaScript' },
+                        { text: 'Learn Vue' },
+                        { text: 'Build something awesome' }
+                    ],
+                    others: {
+                            FirstName: 'John',
+                            LastName: 'Doe',
+                            Age: 30
+                        }
+                },
+                methods: {
+                    hasAtLeastLength: function (n) {
+                        return  function(todo){
+                            return todo.text.length > n;
+                        }
+                    },
+
+                    hasLengthMoreThan10: function(todos, n) {
+                        return todos.filter(this.hasAtLeastLength(n));
+                    }
+                },
+                computed: {
+                    todoWithAtLeastLength: function() {
+                        return this.hasLengthMoreThan10(this.todos, 10);
+                    }
+                }
+            });
+
+            var appOnEvent = new Vue({
+                el: '#app-onEvent',
+                data: {
+                    message: 'Hello Vue.js',
+                    counter: 0,
+                    name: 'vue-demo.js'
+                },
+                methods: {
+                    reverseMessage: function() {
+                        this.message = this.message.split('').reverse().join('');
+                    },
+                    greet: function(event) {
+                        alert('Hello ' + this.name);
+                        alert(event.target.tagName);
+                    },
+                    warn: function (message, event) {
+                        // 现在我们可以访问原生事件对象
+                        if (event) event.preventDefault();
+                        alert(message);
+                    },
+                    preventEnter: function() {
+                        alert("press enter has no effect here");
+                    }
+                }
+            });
+
+            var appForm = new Vue({
+                el: '#app-form',
+                data: {
+                    message: 'Hello Vue!',
+                    checkedNames: [],
+                    picked: '',
+                    selected: '',
+                    selectedMutiple: [],
+                    dynamicSelected: 'A',
+                    dynamicSelections: [
+                        { text: 'One', value: 'A' },
+                        { text: 'Two', value: 'B' },
+                        { text: 'Three', value: 'C' }
+                    ],
+                    // bind value
+                    toggle: {},
+                    a: {name: 'AAA'},
+                    b: {name: 'BBB'}
+                }
+            });
+
+            Vue.component('todo-item', {
+                props: ['todo'],
+                template: '<li>{{ todo.text }}</li>',
+            });
+            Vue.component('simple-counter', {
+                template: '<button v-on:click="counter++">{{ counter }}</button>',
+                data: function() {
+                    return {counter: 0};
+                }
+            });
+            Vue.component('child', {
+                props: ['parentMessage'],
+                template: '<span>Dynamic Message from parent: {{parentMessage}}</span>'
+            });
+            Vue.component('button-counter', {
+                template: '<button v-on:click="increment">{{ counter }}</button>',
+                data: function() {
+                    return {counter: 0};
+                },
+                methods: {
+                    increment: function () {
+                        this.counter++;
+                        this.$emit('increment'); // increment is the event name
+                    }
+                }
+            });
+            Vue.component('my-input', {
+                template: '\
+                <div>  \
+                    <label  v-bind:for="randomId"></label>\
+                    <input v-bind:id="randomId" v-bind:value="value" v-on:input="onInput">\
+                </div>',
+                props: ['value', 'label'], // 这里的value被通过v-model使用了
+                data: function() {
+                    return {
+                        randomId: 'input-' + Math.random()
+                    }
+                },
+                methods: {
+                    onInput: function (event) {
+                        this.$emit('input', event.target.value);
+                    }
+                }
+            });
+            Vue.component('child-with-slot', {
+                template: '\
+                <div class="container">\
+                    <header>\
+                        <slot name="header"></slot>\
+                    </header>\
+                    <main>\
+                        <slot></slot>\
+                    </main>\
+                    <footer>\
+                        <slot name="footer"></slot>\
+                    </footer>\
+                </div>'
+            });
+            Vue.component('app-parent', {
+                template: '\
+                <child-with-slot>\
+                    <h1 slot="header">Here might be a page title</h1>\
+                    <p>A paragraph for the main content.</p>\
+                    <p>And another one.</p>\
+                    <p slot="footer">Here\'s some contact info</p>\
+                </child-with-slot>'
+            })
+
+
+                var appComponent = new Vue({
+                el: '#app-component',
+                data: {
+                    todos: [
+                        { text: 'Learn JavaScript' },
+                        { text: 'Learn Vue' },
+                        { text: 'Build something awesome' }
+                    ],
+                    parentMsg: '',
+                    total: 0,
+                    message:  'Hello '
+                },
+                methods: {
+                    incrementTotal: function () {
+                        this.total++;
+                    }
+                }
+            });
+
+            var appComputed = new Vue({
+                el: '#app-computed',
+                data: {
+                    firstName: 'Huijun',
+                    lastName: 'Chen'
+                },
+                computed: {
+                    fullName: function() {
+                        return this.firstName + ' ' + this.lastName
+                    },
+
+                    fullName2: {
+                        get: function() {
+                            return this.firstName + ' ' + this.lastName
+                        },
+                        set: function(newValue) {
+                            var names = newValue.split(' ');
+                            this.firstName = names[0];
+                            this.lastName = names[1];
+                        }
+                    }
+                }
+            });
+
+            var appIf = new Vue({
+                el: '#app-if',
+                data: {
+                    ok: true
+                }
+            });
+
+
+        </script>
+    </body>
+</html>

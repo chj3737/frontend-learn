@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue router</title>
+  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+  <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <script src="../js/vue.js"></script>
+  <script src="../js/vue-router.js"></script>
+  <script src="../js/browser.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>
+    <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+  </p>
+  <!-- 路由出口 -->
+  <!-- 路由匹配到的组件将渲染在这里 -->
+  <router-view></router-view>
+</div>
+
+
+<!-- 以上为基本配置，以下为扩展方面的功能 -->
+<div id="nested-route-match">
+  <p>
+    <router-link to="/user/foo">/user/foo</router-link>
+    <router-link to="/user/bar">/user/bar</router-link>
+    <router-link to="/user/bar/posts">/user/bar/posts</router-link>
+    <router-link to="/user/bar/profile">/user/bar/profile</router-link>
+
+  </p>
+  <router-view></router-view>
+</div>
+
+<div id="multiple-views">
+  <p>
+    <router-link to="/multiviews">/multiviews</router-link>
+
+  </p>
+  <router-view></router-view>
+  <router-view name="a"></router-view>
+  <router-view name="b"></router-view>
+
+</div>
+
+<script type="text/babel">
+  // 0. 如果使用模块化机制编程， 要调用 Vue.use(VueRouter)
+
+  // 1. 定义（路由）组件。
+  // 可以从其他文件 import 进来
+  const Foo = {template: '<div>foo</div>'};
+  const Bar = {template: '<div>bar</div>'};
+
+  // 2. 定义路由
+  // 每个路由应该映射一个组件。 其中"component" 可以是
+  // 通过 Vue.extend() 创建的组件构造器，
+  // 或者，只是一个组件配置对象。
+  // 我们晚点再讨论嵌套路由。
+  const routes = [
+    {path: '/foo', component: Foo},
+    {path: '/bar', component: Bar}
+  ];
+
+  // 3. 创建 router 实例，然后传 `routes` 配置
+  // 你还可以传别的配置参数, 不过先这么简单着吧。
+  const router = new VueRouter({
+    routes // （缩写）相当于 routes: routes
+  });
+
+  // 4. 创建和挂载根实例。
+  // 记得要通过 router 配置参数注入路由，
+  // 从而让整个应用都有路由功能
+  const app = new Vue({
+    router
+  }).$mount('#app');
+
+  // 现在，应用已经启动了！
+
+
+  // 以上为最简单模板，下面为在标准上的扩展实现
+  // 动态路由
+  const User = {
+    template: '\
+            <div> \
+                <h1>User {{ $route.params.id }} </h1>\
+                <router-view></router-view>\
+            </div>'
+  };
+
+  const UserDefault = {
+    template: '\
+            <div> \
+                <h2> User Home Default </h2>\
+            </div>'
+  };
+
+  const UserProfile = {
+    template: '\
+            <div> \
+                <h2> User Profile </h2>\
+            </div>'
+  };
+
+  const UserPosts = {
+    template: '\
+            <div> \
+                <h2> User Posts </h2>\
+            </div>'
+  };
+
+  // nested views
+  const router2 = new VueRouter({
+    routes: [
+      {
+        path: '/user/:id', component: User,
+        children: [
+          {   // 当匹配到/user/:id，后面没有再匹配到路径时显示的内容
+            path: '',
+            component: UserDefault
+          },
+          {
+            path: 'profile',
+            component: UserProfile
+          },
+          {
+            path: 'posts',
+            component: UserPosts
+          }
+        ]
+      }
+    ]
+  });
+
+  const nestedRoute = new Vue({
+    router: router2
+  }).$mount('#nested-route-match');
+
+
+  // multiple views in one page
+  const router3 = new VueRouter({
+    routes: [
+      {
+        path: '/multiviews',
+        components: {
+          default: UserDefault,
+          a: UserProfile,
+          b: UserPosts
+        }
+      }
+    ]
+  });
+
+  const multiView = new Vue({
+    router: router3
+  }).$mount('#multiple-views');
+
+</script>
+</body>
+</html>

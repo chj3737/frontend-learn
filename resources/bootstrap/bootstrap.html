@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+  <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap</title>
+  <link href="../css/bootstrap.css" rel="stylesheet">
+
+  <script src="../js/browser.min.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    #grid div[class^="col"] {
+      background-color: #dbdbdb;
+      border: solid;
+      border-color: #346898; /* 这里刚开始border color没有生效，需要先把border放在前面*/
+      border-width: 1px;
+    }
+    h1 {
+      border-bottom: solid;
+      border-witdh: 1px;
+      color: #2b669a;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div id="grid">
+    <h1> 一、栅格系统 </h1>
+    <h2> Basic </h2>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+      <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+      <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+      <!-- Optional: clear the XS cols if their content doesn't match in height -->
+      <div class="clearfix visible-xs-block"></div>
+      <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-9">.col-xs-9</div>
+      <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line
+        as
+        one contiguous unit.
+      </div>
+      <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+
+    <h2> Responsive column resets </h2>
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3 Resize your viewport or check it out on your phone for an
+        example.
+      </div>
+      <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+
+      <!-- Add the extra clearfix for only the required viewport
+          添加这行以后，下面的这两组栅格就自动与上面的两组在高度上保持对齐，
+          缩小浏览器窗口查看效果
+          -->
+      <div class="clearfix visible-xs-block"></div>
+
+      <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+      <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+    </div>
+
+    <h2> 列偏移 </h2>
+    <!-- e. col-md-offset- 是相对左侧偏移，偏移应该是从1-11，1个单位是一个column的宽度（一行总共有12个column)
+  -->
+    <div class="row">
+      <div class="col-md-4">.col-md-4</div>
+      <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+      <div class="col-md-3 col-md-offset-2">.col-md-4 .col-md-offset-4</div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+    </div>
+
+    <h2> 列排序 </h2>
+
+    <!-- FIXME: pull & push 是啥意思？ -->
+    <div class="row">
+      <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+      <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+    </div>
+  </div>
+  <div>
+    <h1> 二、排版 </h1>
+    <h2> 标题 </h2>
+    <h1>h1. Bootstrap heading
+      <small>Secondary text</small>
+    </h1>
+    <h2>h2. Bootstrap heading
+      <small>Secondary text</small>
+    </h2>
+    <h3>h3. Bootstrap heading
+      <small>Secondary text</small>
+    </h3>
+    <h4>h4. Bootstrap heading
+      <small>Secondary text</small>
+    </h4>
+    <h5>h5. Bootstrap heading
+      <small>Secondary text</small>
+    </h5>
+    <h6>h6. Bootstrap heading
+      <small>Secondary text</small>
+    </h6>
+
+    <h2> 内联文本 | 大小写 | 对齐| 地址 | quote 等 </h2>
+    You can use the mark tag to
+    <mark>highlight</mark>
+    text.<br>
+    <del>This line of text is meant to be treated as deleted text.</del>
+    <br>
+    <s>This line of text is meant to be treated as no longer accurate.</s><br>
+    <ins>This line of text is meant to be treated as an addition to the document.</ins>
+    <br>
+    <u>This line of text will render as underlined</u><br>
+    <small>This line of text is meant to be treated as fine print.</small>
+    <br>
+    <strong>rendered as bold text</strong><br>
+    <em>rendered as italicized text</em><br>
+    <p class="text-left">Left aligned text.</p>
+    <p class="text-center">Center aligned text.</p>
+    <p class="text-right">Right aligned text.</p>
+    <p class="text-justify">Justified text.</p>
+    <p class="text-nowrap">No wrap text.</p>
+
+    <p class="text-lowercase">Lowercased text.</p>
+    <p class="text-uppercase">Uppercased text.</p>
+    <p class="text-capitalize">Capitalized text.</p>
+    <abbr title="attribute">attr</abbr>
+
+    <address>
+      <strong>Twitter, Inc.</strong><br>
+      795 Folsom Ave, Suite 600<br>
+      San Francisco, CA 94107<br>
+      <abbr title="Phone">P:</abbr> (123) 456-7890
+    </address>
+
+    <address>
+      <strong>Full Name</strong><br>
+      <a href="mailto:#">first.last@example.com</a>
+    </address>
+
+    <blockquote class="blockquote-reverse">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+  </div>
+
+  <div>
+    <h1> 三、表格 </h1>
+    <div class="table-responsive">
+      <table class="table  table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Column heading</th>
+          <th>Column heading</th>
+          <th>Column heading</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="active">
+          <td>1</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="success">
+          <td>3</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="info">
+          <td>5</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="warning">
+          <td>7</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="danger">
+          <td>9</td>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr>
+          <td class="active">10</td>
+          <td class="success">Column content</td>
+          <td class="warning">Column content</td>
+          <td class="danger">Column content</td>
+        </tr>
+        <tr>
+          <td class="active">11</td>
+          <td class="info">Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <h1> 四、Form </h1>
+    <h2> Basic </h2>
+    <form role="form">
+      <!-- form-control: set width to 100% -->
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Check me out
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+    <h2> 内联表单 </h2>
+    <form class="form-inline" role="form">
+      <div class="form-group">
+        <!-- sr-only 隐藏label
+        inline模式下， width变成自动 -->
+        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <input class="form-control" type="email" placeholder="Enter email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword2">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+      </div>
+      <div class="checkbox">
+        <!-- 这是label 跟 input 合起来的简写方式吗？ -->
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </form>
+  </div>
+
+  <h2> 水平排列表单 </h2>
+  <!-- no need to use row directly,
+  但是注意，对于修改了col-* 栅格样式的，在这里同样会有影响 -->
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <!-- control-label 似乎加入了右对齐 -->
+      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <!-- form-control 调整了高度 -->
+        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Remember me
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Sign in</button>
+      </div>
+    </div>
+  </form>
+
+  <h2>输入控件示例</h2>
+  <input type="text" class="form-control" placeholder="Text input">
+  <textarea class="form-control" rows="3"></textarea>
+  <h3>多选|单选框</h3>
+  <h4>默认</h4>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="">
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+  <!--  需要先在div这级加上input的类型？ -->
+  <div class="checkbox disabled">
+    <label>
+      <!-- 鼠标放到文字上看下禁用的效果 -->
+      <input type="checkbox" value="" disabled>
+      Option two is disabled
+    </label>
+  </div>
+
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+      Option two can be something else and selecting it will deselect option one
+    </label>
+  </div>
+  <div class="radio disabled">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+      Option three is disabled
+    </label>
+  </div>
+  <h4>内联单选和多选框 </h4>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+  </label>
+
+  <label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+  </label>
+
+  <h3>下拉列表select</h3>
+  <select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+
+  <select multiple class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+
+  <h2>静态控件</h2>
+  <!-- 如果需要在表单中将一行纯文本和 label 元素放置于同一行，为 <p> 元素添加 .form-control-static 类即可 -->
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <!-- 如果去掉这个class，高度就不一致了 -->
+        <p class="form-control-static">email@example.com</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+  </form>
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label class="sr-only">Email</label>
+      <p class="form-control-static">email@example.com</p>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword2" class="sr-only">Password</label>
+      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default">Confirm identity</button>
+  </form>
+
+  <h2>禁用</h2>
+  <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
+  <form role="form">
+    <!-- 这里的disabled 将下面的子元素全部disabled了 -->
+    <fieldset disabled>
+      <div class="form-group">
+        <label for="disabledTextInput">Disabled input</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+      </div>
+      <div class="form-group">
+        <label for="disabledSelect">Disabled select menu</label>
+        <select id="disabledSelect" class="form-control">
+          <option>Disabled select</option>
+        </select>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Can't check this
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+  </form>
+
+  <h2>校验状态</h2>
+  <div class="form-group has-success">
+    <label class="control-label" for="inputSuccess1">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess1">
+  </div>
+  <div class="form-group has-warning">
+    <label class="control-label" for="inputWarning1">Input with warning</label>
+    <input type="text" class="form-control" id="inputWarning1">
+  </div>
+  <div class="form-group has-error">
+    <label class="control-label" for="inputError1">Input with error</label>
+    <input type="text" class="form-control" id="inputError1">
+  </div>
+  <div class="has-success">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" id="checkboxSuccess" value="option1">
+        Checkbox with success
+      </label>
+    </div>
+  </div>
+  <div class="has-warning">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" id="checkboxWarning" value="option1">
+        Checkbox with warning
+      </label>
+    </div>
+  </div>
+  <div class="has-error">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" id="checkboxError" value="option1">
+        Checkbox with error
+      </label>
+    </div>
+  </div>
+
+  <!-- 图标需要fonts目录支持 -->
+  <div class="form-group has-success has-feedback">
+    <label class="control-label" for="inputSuccess2">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess2">
+    <!-- 注意这里显示图标的技巧，在input后面加一个空的span标签，来显示图标（实际上是一个特殊的字体） -->
+    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  </div>
+  <div class="form-group has-warning has-feedback">
+    <label class="control-label" for="inputWarning2">Input with warning</label>
+    <input type="text" class="form-control" id="inputWarning2">
+    <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+  </div>
+  <div class="form-group has-error has-feedback">
+    <label class="control-label" for="inputError2">Input with error</label>
+    <input type="text" class="form-control" id="inputError2">
+    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+  </div>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group has-success has-feedback">
+      <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="inputSuccess3">
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      </div>
+    </div>
+  </form>
+
+  <form class="form-inline" role="form">
+    <div class="form-group has-success has-feedback">
+      <label class="control-label" for="inputSuccess4">Input with success</label>
+      <input type="text" class="form-control" id="inputSuccess4">
+      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+    </div>
+  </form>
+
+  <h2>控件尺寸</h2>
+  <h3>高度</h3>
+  <!-- 通过 .input-lg 类似的类可以为控件设置高度，通过 .col-lg-* 类似的类可以为控件设置宽度。 -->
+  <div class="controls">
+    <input class="form-control input-lg" type="text" placeholder=".input-lg">
+    <input type="text" class="form-control" placeholder="Default input">
+    <input class="form-control input-sm" type="text" placeholder=".input-sm">
+
+    <select class="form-control input-lg">
+      <option value="">.input-lg</option>
+    </select>
+    <select class="form-control">
+      <option value="">Default select</option>
+    </select>
+    <select class="form-control input-sm">
+      <option value="">.input-sm</option>
+    </select>
+
+    <h3>水平排列的表单组(form group)的尺寸</h3>
+    <!-- 通过添加 .form-group-lg 或 .form-group-sm 类，为 .form-horizontal 包裹的 label 元素和表单控件快速设置尺寸。 -->
+    <form class="form-horizontal" role="form">
+      <div class="form-group form-group-lg">
+        <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+        </div>
+      </div>
+      <div class="form-group form-group-sm">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
+        </div>
+      </div>
+    </form>
+
+    <h3>调整列（column）尺寸</h3>
+    <!-- 用栅格系统中的列（column）包裹输入框或其任何父元素，都可很容易的为其设置宽度。、
+     意思就是把输入框或是其它元素放在col-指定的列下面，就自然拥有那个列的宽度 -->
+    <div class="row">
+      <div class="col-xs-2">
+        <input type="text" class="form-control" placeholder=".col-xs-2">
+      </div>
+      <div class="col-xs-3">
+        <input type="text" class="form-control" placeholder=".col-xs-3">
+      </div>
+      <div class="col-xs-4">
+        <input type="text" class="form-control" placeholder=".col-xs-4">
+      </div>
+    </div>
+
+    <h3>辅助文本（针对表单控件的块（block)级辅助文本--应该就是放在某个输入控件下面的说明性文字样式）</h3>
+    <input type="text" class="form-control" placeholder="input to be explained">
+    <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.
+    A block of help text that breaks onto a new line and may extend beyond one line.
+    A block of help text that breaks onto a new line and may extend beyond one line.
+    A block of help text that breaks onto a new line and may extend beyond one line.
+    A block of help text that breaks onto a new line and may extend beyond one line.
+    A block of help text that breaks onto a new line and may extend beyond one line.</span>
+  </div>
+
+  <h1>五、按钮Button</h1>
+  <h2>Basic</h2>
+  <!-- Standard button -->
+  <button type="button" class="btn btn-default">Default</button>
+
+  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+  <button type="button" class="btn btn-primary">Primary</button>
+
+  <!-- Indicates a successful or positive action -->
+  <button type="button" class="btn btn-success">Success</button>
+
+  <!-- Contextual button for informational alert messages -->
+  <button type="button" class="btn btn-info">Info</button>
+
+  <!-- Indicates caution should be taken with this action -->
+  <button type="button" class="btn btn-warning">Warning</button>
+
+  <!-- Indicates a dangerous or potentially negative action -->
+  <button type="button" class="btn btn-danger">Danger</button>
+
+  <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+  <button type="button" class="btn btn-link">Link</button>
+  <h2>按钮类</h2>
+  <h4>强烈建议尽可能使用 <code>&lt;button&gt;</code> 元素来获得在各个浏览器上获得相匹配的绘制效果。</h4>
+  <a class="btn btn-default" href="#" role="button">Link</a>
+  <button class="btn btn-default" type="submit">Button</button>
+  <input class="btn btn-default" type="button" value="Input">
+  <input class="btn btn-default" type="submit" value="Submit">
+
+
+  <h2>尺寸</h2>
+  <p>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    <button type="button" class="btn btn-default btn-lg">Large button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary">Default button</button>
+    <button type="button" class="btn btn-default">Default button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+    <button type="button" class="btn btn-default btn-sm">Small button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+    <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+  </p>
+  <!-- 通过给按钮添加 .btn-block 类可以将其拉伸至父元素100%的宽度，而且按钮也变为了块级（block）元素。 -->
+  <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+    <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+  </div>
+
+  <h2>激活状态</h2>
+  <!--
+  当按钮处于激活状态时，其表现为被按压下去（底色更深、边框夜色更深、向内投射阴影）。
+  对于 <button> 元素，是通过 :active 状态实现的。对于 <a> 元素，是通过 .active 类实现的。
+  然而，你还可以将 .active 应用到 <button> 上，并通过编程的方式使其处于激活状态。
+  -->
+  <button type="button" class="btn btn-primary btn-lg active">Primary button</button>
+  <button type="button" class="btn btn-primary btn-lg ">Primary button no active</button>
+  <button type="button" class="btn btn-default btn-lg active">Button</button>
+  <button type="button" class="btn btn-default btn-lg">Button no active</button>
+  <br><br>
+  <a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
+  <a href="#" class="btn btn-primary btn-lg" role="button">Primary link no active</a>
+  <a href="#" class="btn btn-default btn-lg active" role="button">Link</a>
+  <a href="#" class="btn btn-default btn-lg" role="button">Link no active</a>
+  <h2>禁用状态</h2>
+  <!-- 注意到button是用disabled属性，而a是用disabled class.
+   不过从试用的效果来看button用disabled属性也是可以的 -->
+  <div>
+    <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
+    <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+  </div>
+  <div>
+    <a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
+    <a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+  </div>
+
+  <h1>六、代码效果</h1>
+  To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+  To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+  <pre>pre  effect: &lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+  variable: <var>y</var> = <var>m</var><var>x</var> + <var>b</var><br>
+  <samp>This text is meant to be treated as sample output from a computer program.</samp>
+
+  <h1>七、辅助类</h1>
+  <h2>前后背景</h2>
+  <!--
+   Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
+
+  Dealing with specificity：
+Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <span> with the class.
+-->
+  <div class="bs-example">
+    <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+    <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+    <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+    <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+  </div>
+
+  <div class="bs-example bs-example-bg-classes">
+    <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+    <p class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    <p class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+    <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+  </div>
+  <h2>关闭按钮，三角符号</h2>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" class="close">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+      </button>
+    </div>
+  </div>
+  <span class="caret"></span>
+  <h2>快速浮动</h2>
+  <!-- 便捷靠左或是靠右对齐 -->
+  <div class="pull-left">pull left</div><br>
+  <div class="pull-right">pull right</div><br>
+  <!-- 居中， FIXME：貌似用不了 -->
+  <div class=" center-block">center block。<span class="text-warning">FIXME： not worked</span></div><br>
+
+
+  <h2>显示|隐藏</h2>
+  <div class="show"  style="border: solid; border-color: #346898; border-width: 1px">show</div>
+  hidden元素就跟没有这个元素效果一样:before hidden.<div class="hidden" style="width: 100px;">hidden</div>after hidden<br>
+  invisible元素还占据空间，但是不可见: before invisible.<div class="invisible" style="width: 100px;">invisible</div>after invisible<br>
+
+
+  Hide an element to all devices <strong>except screen readers</strong> with .sr-only.
+  FIXME：另外就是 sr-only-focusable 不知道具体怎么用起来:
+  <a class="sr-only sr-only-focusable" href="#grid">Skip to main content</a>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.js"></script>
+</body>
+</html>

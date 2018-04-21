@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+  <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+  <META HTTP-EQUIV="expires" CONTENT="0">
+  <title>Vuex Test</title>
+  <script src="../js/vue.js"></script>
+  <script src="../js/vuex.js"></script>
+  <script src="../js/browser.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <comp></comp>
+    <comp2></comp2>
+    <comp3></comp3>
+  </div>
+  <script>
+    var Comp = {
+      template: "<div><textarea placeholder='test input' v-model=' textValue'></textarea><p>message is {{textValue}}</p></div>",
+//      props: ['text'],
+      data: function() {
+        return {
+          textValue: '',
+        }
+      }
+    };
+    var Comp2 = {
+      template: "<div><textarea placeholder='test input' v-model=' textValue'></textarea><p>message is {{textValue}}</p></div>",
+//      props: ['text'],
+      data: function() {
+        return {
+          textValue: '',
+        }
+      }
+    };
+    var app = new Vue({
+      el: '#container',
+      components: {
+        'comp': Comp,
+        'comp2': Comp2,
+        'comp3': {
+          template: '<p>direct component</p>'
+        }
+      }
+    });
+  </script>
+</body>
+</html>

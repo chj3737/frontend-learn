@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vuex Demo</title>
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+    <META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <script src="../js/vue.js"></script>
+    <script src="../js/vuex.js"></script>
+    <script src="../js/browser.min.js"></script>
+
+</head>
+<body>
+    <div id="store-basic"></div>
+
+
+
+    <script type="text/babel">
+
+        const store = new Vuex.Store({
+            state: {
+                count: 0
+            },
+            mutations: {
+                increment (state) {
+                    state.count++
+                }
+            }
+        });
+
+        const Counter = {
+            template:  `<div>{{count}}</div>`,
+
+            computed: {
+                count() {
+                    return this.$store.state.count;
+                }
+            }
+        };
+
+
+        const appStoreBasic = new Vue({
+            el: '#store-basic',
+            store,
+            methods: {
+                add() {
+                    this.$store.commit('increment');
+                },
+            },
+            components: {Counter},
+            template: '<div><counter></counter><button @click="add">add</button></div>'
+        });
+
+    </script>
+</body>
+</html>
