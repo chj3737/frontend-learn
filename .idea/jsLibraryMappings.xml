@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://C:/work/SVN_管理者视图/DEV/itsmConsole" libraries="{itsmConsole/node_modules}" />
-    <file url="file://C:/work/学习材料/vue-loader-demo/my-project" libraries="{Node.js Core, my-project/node_modules}" />
-    <file url="file://C:/work/学习材料/vue-loader-demo/vue-hackernews-2.0-master" libraries="{Node.js Core}" />
-    <includedPredefinedLibrary name="ECMAScript 6" />
-  </component>
-</project>

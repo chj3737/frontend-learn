@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="adq:war">
-    <output-path>C:/work/SVN_管理者视图/DEV/adq/target</output-path>
-    <root id="archive" name="adq-1.0.0.0.war">
-      <element id="artifact" artifact-name="adq:war exploded" />
-    </root>
-  </artifact>
-</component>
